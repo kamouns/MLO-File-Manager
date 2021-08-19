@@ -1,0 +1,111 @@
+{% extends "base.html"%}
+{% block title %}result{% endblock %}
+{% block content %}
+<h1 style="text-align:center;
+           padding-bottom: 10px;
+           padding-top: 20px;"> {{fnx}} </h1>
+
+<table style="text-align:center ;width: 80%; margin-left: auto;margin-right: auto; font-size: larger; "
+  class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Link ID</th>
+      <th scope="col">date de creation du MLO</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">length (m)</th>
+      <th scope="col">Calc_Meth</th>
+      <th scope="col">Type du lien </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{sh['B'+ '26'].value}} </td>
+      <td>{{sh['B'+ '2'].value[17:]}}</td>
+      <td>{{sh['B'+ '27'].value}} </td>
+      <td>{{sh['D'+ '26'].value}} </td>
+      <td>{{sh['D'+ '27'].value}} </td>
+      <td>{{sh['C'+ '3'].value}} </td>
+    </tr>
+  </tbody>
+</table>
+
+<table style="text-align:center ;table-layout:fixed;width: 90%; margin-left: auto;margin-right: auto;font-size: large; "
+  class="table table-hover table-bordered  border-primary border-2">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="width: 10%;"> </th>
+      <th scope="col" style="width: 20%;"> </th>
+      <th scope="col"> END A</th>
+      <th scope="col"> END B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <th scope="row" rowspan="6" style="vertical-align: middle; background-color: rgb(236, 236, 236);">LINK Ends</th>
+    {%for i in range (30,35)%}
+    <tr>
+
+      {%for l in ['B','C','D']%}
+      <td>{{sh[l+ i|string ].value}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+
+    <tr>
+      <th> </th>
+    </tr>
+
+    <th scope="row" rowspan="7" style="vertical-align: middle; background-color: rgb(236, 236, 236);">Frequency</th>
+    {%for i in range (36,42)%}
+    <tr>
+
+      {%for l in ['B','C','D']%}
+      <td>{{sh[l+ i|string ].value}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+    <tr>
+      <th> </th>
+    </tr>
+    <th scope="row" rowspan="10" style="vertical-align: middle; background-color: rgb(236, 236, 236);">Antenna (main)
+    </th>
+    {%for i in range (43,52)%}
+    <tr>
+
+      {%for l in ['B','C','D']%}
+      <td>{{sh[l+ i|string ].value}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+    <tr>
+      <th> </th>
+    </tr>
+    <th scope="row" rowspan="13" style="vertical-align: middle; background-color: rgb(236, 236, 236);">Radio Equipment
+    </th>
+    {%for i in range (53,65)%}
+    <tr>
+      {%for l in ['B','C','D']%}
+      <td>{% if (sh['D'+ i|string ].value)|string != 'None' %}
+        {{sh[l+ i|string ].value}}
+        {%endif%}
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+    <tr>
+      <th> </th>
+    </tr>
+    <th scope="row" rowspan="6" style="vertical-align: middle; background-color: rgb(236, 236, 236);">Performance </th>
+    {%for i in range (66,71)%}
+    <tr>
+      {%for l in ['B','C','D']%}
+      <td>{% if (sh[l+ i|string ].value)|string != 'None' %}
+        {{sh[l+ i|string ].value}}
+        {%endif%}
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div   class="container-fluid"   style="position: absolute;top: 50%;left: 50%;  -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+    <div class="row">
+       
+      <div class="col-sm-4 ">
+        <a style="padding: 10%;width: 100%;   " type="button" class="btn btn-outline-primary btn-lg" href ='/search'>Recherche</a>
+      
+      </div>
+      <div class="col-sm-4 ">
+        <a style="padding: 10%;width: 100%;" type="button" class="btn btn-outline-primary btn-lg" href ='/insert'>Nouveau Fichier</a>
+    </div>
+    <div  class="col-sm-4 col ">
+        <a style="padding: 10%; width: 100%;" type="button" class="btn btn-outline-primary btn-lg" href ='/all'> Tout Les Fichiers</a>
+    
+    </div>
+ 
+    </div>
+  </div>
+{% endblock %}

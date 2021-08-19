@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+{% block title %}all files{% endblock %}
+{% block content %}
+<h1 align="center">Tout Les Fichiers </h1>
+<div style="width: 50%;  margin-left: auto;margin-right: auto;">
+    <ul  align="center" class="list-group " >
+    <form  method="POST" action="/result">
+        {% for fname in fln %}
+        <li class="list-group-item list-group-item-action ">
+            <input  class="btn btn-lg" type="submit" value ="{{fname}}" name="button">
+        </li>
+        {% endfor %}
+    </form>
+</ul>
+</div>
+
+{% endblock %}

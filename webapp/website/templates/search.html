@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{% block title %}recherche{% endblock %}
+{% block content %}
+
+
+       
+    
+  <form style="width: 60%; margin-left: auto; margin-right: auto ; margin-top: 5%;"  action="/searchResult" method="POST">
+    <h2 align="center"> Recherche </h2> 
+    <div  class="form-row  mb-2">
+        <div  class="col-md-10"></div>
+           <label  for="mlo"><h2 style="  padding: 5px;" >Entrez le nom du MLO</h2> </label>
+             <input class="form-control" type="text" name="mlo" id="mlo" placeholder="Ex: AAA_0000_AAA_0000">
+        </div>
+             <button style="margin-top:2% ;
+             margin-left:90%; " type="submit" class="btn btn-outline-success btn-lg">recherche</button>
+          
+    </div>
+</form>
+
+{% endblock %}

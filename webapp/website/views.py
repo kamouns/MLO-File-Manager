@@ -9,10 +9,10 @@ import openpyxl
 from werkzeug.utils import redirect, secure_filename
 views=Blueprint('views', __name__)
 def Filelistfun() :
-    fileslist=glob.glob("website\ExcelFiles/*.xlsx")
+    fileslist=glob.glob("webapp\website\ExcelFiles/*.xlsx")
     fileslistname=[]
     for f in fileslist: 
-        fileslistname.append(str(f).replace('website\ExcelFiles\\',''))
+        fileslistname.append(str(f).replace('webapp\website\ExcelFiles\\',''))
     return fileslistname
 ALLOWED_EXTENSIONS = {'xlsx'}
 def allowed_file(filename):
@@ -32,7 +32,7 @@ def upload_file():
         if file.filename=='':
             flash ('Pas de fichier selectionné !' ,category='ERR')
         if not allowed_file(file.filename):
-            flash( 'pas de fichier excel', category='ERR')
+            flash( 'Pas de fichier excel', category='ERR')
         if file and allowed_file(file.filename):
             filename= secure_filename(file.filename)
             i =1

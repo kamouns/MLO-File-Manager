@@ -7,10 +7,10 @@ from flask import Blueprint , render_template,request
 import glob
 
 def Filelistfun() :
-    fileslist=glob.glob("website\ExcelFiles/*.xlsx")
+    fileslist=glob.glob("webapp\website\ExcelFiles/*.xlsx")
     fileslistname=[]
     for f in fileslist: 
-        fileslistname.append(str(f).replace('website\ExcelFiles\\',''))
+        fileslistname.append(str(f).replace('webapp\website\ExcelFiles\\',''))
     return fileslistname
 
 search=Blueprint('search', __name__)
@@ -24,16 +24,16 @@ def result():
     if request.method=='POST':
         try :
             filename=request.form['F_inside_result']
-            ps =openpyxl.load_workbook(str( 'website\ExcelFiles' +'/'+str(filename) +'.xlsx'))
+            ps =openpyxl.load_workbook(str( 'webapp\website\ExcelFiles' +'/'+str(filename) +'.xlsx'))
             sh= ps['Feuil1']
             sh['C'+'3'].value = request.form.get('MLOtype')
-            ps.save(str('website\ExcelFiles' +'/'+filename+'.xlsx'))
+            ps.save(str('webapp\website\ExcelFiles' +'/'+filename+'.xlsx'))
             return render_template("result.html" , sh=sh , fnx=filename)
         except:
             try:
                 filename=request.form['F_inside_done']
                 fileNameNoXlsx=filename.replace('.xlsx','')
-                f ='website/ExcelFiles/'+ filename
+                f ='webapp\website/ExcelFiles/'+ filename
                 ps=openpyxl.load_workbook(str(f))
                 sh= ps['Feuil1']
                 return render_template("result.html" , sh=sh , fnx=fileNameNoXlsx)
@@ -44,7 +44,7 @@ def result():
         try  :
             fn =(request.form['button'])
             fileNameNoXlsx=fn.replace('.xlsx','')
-            f ='website/ExcelFiles/'+ fn
+            f ='webapp\website/ExcelFiles/'+ fn
             ps =openpyxl.load_workbook(str(f))
             sh= ps['Feuil1']
             return render_template("result.html" , sh=sh , fnx=fileNameNoXlsx)
@@ -58,7 +58,7 @@ def result():
                 fn=fn.split(',')[0]
                 a=False
             finally :
-                f ='website/ExcelFiles/'+ fn
+                f ='webapp\website/ExcelFiles/'+ fn
                 try :
 
                     os.remove(f)

@@ -39,10 +39,10 @@ def upload_file():
             filelist=Filelistfun()
             while filename in filelist:
                 if i>1 :
-                    filename=filename[: -18]
+                    filename=filename[: -19]
                 else :
                     filename=filename[: -5]
-                filename= filename+'('+str (datetime.today().strftime("%d-%m-%y"))+')-'+str (i)+'-.xlsx'
+                filename= filename+'('+str (datetime.today().strftime("%d-%m-%y"))+')-V'+str (i)+'-.xlsx'
                 i+=1
             file.save(os.path.join(UPLOAD_FOLDER,filename))
             ps =openpyxl.load_workbook(str( UPLOAD_FOLDER +'/'+filename))

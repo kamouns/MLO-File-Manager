@@ -5,17 +5,15 @@
 
        
     
-  <form style="width: 60%; margin-left: auto; margin-right: auto ; margin-top: 5%;"  action="/searchResult" method="POST">
-    <h2 align="center"> Recherche </h2> 
-    <div  style="  padding: 5%;  height: max-content; " class="form-row  mb-2">
-        <div  class="col-md-10"></div>
-           <label  for="mlo"><h2 style="  padding: 5px;" >Entrez le nom du MLO</h2> </label>
+  <form style="width: 60%; margin-left: auto; margin-right: auto ; margin-top: 2%;"  action="/searchResult" method="POST">
+    <h1 align="center"> Recherche </h1> 
+    <div  class="form-row  mb-2 shadow-lg">
+        <div  style=" border-radius: 25px; padding: 2%;  height: max-content; " class="col-md-10">
+           <label  for="mlo"><h2 style="  padding: 2  px;" >Entrez le nom du MLO</h2> </label>
              <input class="form-control" type="text" name="mlo" id="mlo" placeholder="Ex: AAA_0000_AAA_0000">
-        </div>
-             <button style="margin-top:2% ;
-             margin-left:90%; " type="submit" class="btn btn-outline-success btn-lg">recherche</button>
-          
-    </div>
+            <button style="margin-top:2% ; " type="submit" class="btn btn-outline-success shadow btn-lg">Recherche</button>
+          </div>
+    
 </form>
 
 {% endblock %}
